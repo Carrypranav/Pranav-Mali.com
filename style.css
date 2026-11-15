@@ -1441,34 +1441,29 @@ a {
     font-size: 0.72rem !important;
   }
 
-  /* Mobile Menu Bar: Sleek Horizontal Floating Glass Capsule */
+  /* Mobile Menu Bar: Fixed on Far Right with 90deg Rotated Typography (Same as Desktop) */
   .vertical-nav {
     display: flex !important;
     position: fixed !important;
-    top: 56px !important;
-    left: 50% !important;
-    right: auto !important;
+    right: 14px !important;
+    top: 50% !important;
+    left: auto !important;
     bottom: auto !important;
-    transform: translateX(-50%) !important;
-    flex-direction: row !important;
+    transform: translateY(-50%) !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 3px !important;
-    width: auto !important;
-    max-width: calc(100vw - 16px) !important;
+    gap: 18px !important;
+    width: 24px !important;
     height: auto !important;
-    padding: 3px 6px !important;
-    background: rgba(16, 12, 9, 0.82) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 9999px !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+    max-width: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     z-index: 100 !important;
-    pointer-events: auto !important;
-    overflow-x: auto !important;
-    scrollbar-width: none !important;
-    box-sizing: border-box !important;
+    pointer-events: none !important;
+    overflow: visible !important;
   }
 
   .vertical-nav::-webkit-scrollbar {
@@ -1476,36 +1471,45 @@ a {
   }
 
   .vertical-nav .nav-item {
-    transform: none !important;
-    width: auto !important;
-    height: auto !important;
-    font-size: 10.5px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.06em !important;
-    padding: 5px 8px !important;
-    border-radius: 9999px !important;
-    color: var(--muted) !important;
+    transform: rotate(90deg) !important;
+    transform-origin: center center !important;
+    width: 24px !important;
+    height: 44px !important;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
     white-space: nowrap !important;
+    color: #8E8E93 !important;
     background: transparent !important;
-    border: 1px solid transparent !important;
-    text-decoration: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
     pointer-events: auto !important;
     touch-action: manipulation !important;
-    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: color 0.25s ease, opacity 0.25s ease, text-shadow 0.25s ease !important;
+    user-select: none !important;
+    box-shadow: none !important;
   }
 
   .vertical-nav .nav-item:hover,
   .vertical-nav .nav-item:active {
-    color: #ffffff !important;
+    color: #FFFFFF !important;
   }
 
   .vertical-nav .nav-item.active {
-    color: #ffffff !important;
+    color: #FFFFFF !important;
     font-weight: 600 !important;
-    background: rgba(255, 154, 77, 0.22) !important;
-    border-color: rgba(255, 154, 77, 0.4) !important;
-    text-shadow: 0 0 8px rgba(255, 154, 77, 0.6) !important;
-    text-decoration: none !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.75) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 4px !important;
+    text-decoration-color: var(--accent) !important;
+    background: transparent !important;
+    border: none !important;
   }
   
   /* Mobile Character & Stage */
@@ -1521,7 +1525,8 @@ a {
     height: 100%;
     object-fit: cover;
     object-position: 50% 25%;
-    transform: translate(-50%, -50%) !important;
+    transform: translate(calc(-50% + var(--stage-x, 0vw)), -50%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   /* Single static stage vignette on mobile for optimal text contrast without stacking */
@@ -1751,19 +1756,28 @@ a {
     padding-left: 0 !important;
     padding-right: 0 !important;
     justify-content: center !important;
+    align-items: center !important;
     width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .resume-paper {
     max-width: 100% !important;
     padding: 1.15rem 1rem !important;
-    max-height: none !important;
-    overflow-y: visible !important;
+    max-height: calc(100vh - 130px) !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
     border-radius: 12px;
-    margin: 0 !important;
-    top: 0 !important;
+    margin: 0 auto !important;
+    top: 100px !important;
     left: 0 !important;
     pointer-events: auto !important;
+  }
+
+  .resume-paper.dropped {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
   }
 
   .paper-header {
@@ -1844,11 +1858,11 @@ a {
     width: 100% !important;
     max-width: 440px !important;
     margin: 0 auto !important;
-    margin-top: 0 !important;
+    top: 50px !important;
     transform: none !important;
     padding: 1.4rem 1.2rem !important;
     border-radius: 18px !important;
-    max-height: calc(100vh - 90px) !important;
+    max-height: calc(100vh - 120px) !important;
     overflow-y: auto !important;
     box-sizing: border-box !important;
     pointer-events: auto !important;
